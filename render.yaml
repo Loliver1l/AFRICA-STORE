@@ -7,23 +7,35 @@ services:
     envVars:
       - key: APP_ENV
         value: production
+
       - key: APP_DEBUG
         value: "false"
+
       - key: DB_CONNECTION
         value: pgsql
+
       - key: APP_KEY
         sync: false
+
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: africa-store-db
+          property: connectionString
+
       - key: PAYSTACK_SECRET_KEY
         sync: false
+
       - key: PAYSTACK_PUBLIC_KEY
         sync: false
+
       - key: BINANCE_PAY_API_KEY
         sync: false
+
       - key: BINANCE_PAY_SECRET_KEY
         sync: false
+
       - key: ADMIN_EMAIL
         sync: false
+
       - key: ADMIN_PASSWORD
         sync: false
