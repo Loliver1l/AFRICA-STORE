@@ -1,0 +1,45 @@
+name: Build Laravel Project
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository
+        uses: actions/checkout@v4
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, pdo, pdo_mysql, pdo_pgsql
+          coverage: none
+
+      - name: Create Laravel 13 project
+        run: |
+          composer create-project laravel/laravel:^13.0 /tmp/laravel-build --no-interaction
+
+      - name: Extract East Africa Store files
+        run: |
+          mkdir -p /tmp/east-africa-store
+          unzip -q east-africa-store.zip -d /tmp/east-africa-store
+          cp -a /tmp/east-africa-store/east-africa-store/. /tmp/laravel-build/
+
+      - name: Prepare Git repository
+        run: |
+          cp -a /tmp/laravel-build/. .
+          rm -rf /tmp/laravel-build
+
+      - name: Save complete Laravel project
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Build complete Laravel 13 project [skip ci]" || echo "Nothing to commit"
+          git push
