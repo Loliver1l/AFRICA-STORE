@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration {public function up():void{Schema::create('referral_rewards',function(Blueprint $t){$t->id();$t->foreignId('referral_id')->constrained()->cascadeOnDelete();$t->foreignId('order_id')->nullable()->constrained()->nullOnDelete();$t->decimal('percentage',5,2);$t->decimal('amount_usd',12,2);$t->string('status')->default('pending');$t->timestamp('paid_at')->nullable();$t->unique(['referral_id','order_id']);$t->timestamps();});}public function down():void{Schema::dropIfExists('referral_rewards');}};

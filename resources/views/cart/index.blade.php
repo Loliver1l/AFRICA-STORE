@@ -1,0 +1,2 @@
+@extends('layouts.app') @section('content')
+<h1>Cart</h1>@forelse($cart as $item)<div class="card"><h3>{{$item['name']}}</h3><p>${{number_format($item['price'],2)}} × {{$item['quantity']}}</p><form method="POST" action="{{route('cart.remove',$item['id'])}}">@csrf @method('DELETE')<button class="btn">Remove</button></form></div>@empty<p>Your cart is empty.</p>@endforelse @if(count($cart))<br><a class="btn" href="{{route('checkout.index')}}">Checkout</a>@endif @endsection

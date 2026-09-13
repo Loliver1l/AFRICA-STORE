@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration {public function up():void{Schema::create('messages',function(Blueprint $t){$t->id();$t->foreignId('sender_id')->nullable()->constrained('users')->nullOnDelete();$t->foreignId('receiver_id')->nullable()->constrained('users')->nullOnDelete();$t->string('subject')->nullable();$t->text('message');$t->string('status')->default('unread');$t->timestamp('read_at')->nullable();$t->timestamps();});}public function down():void{Schema::dropIfExists('messages');}};

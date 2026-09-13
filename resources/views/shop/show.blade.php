@@ -1,0 +1,2 @@
+@extends('layouts.app') @section('content')
+<div class="card"><h1>{{$product->name}}</h1><p>{{$product->description}}</p><div class="price">${{number_format($product->price_usd,2)}}</div><p>Stock: {{$product->stock}}</p>@auth @if($product->status==='available')<form method="POST" action="{{route('cart.add')}}">@csrf<input type="hidden" name="product_id" value="{{$product->id}}"><input type="number" name="quantity" value="1" min="1"><button class="btn">Add to cart</button></form>@endif @else<a class="btn" href="/login">Login to buy</a>@endauth</div>@endsection

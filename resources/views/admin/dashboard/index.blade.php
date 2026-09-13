@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('content')<h1>Admin Dashboard</h1><div class="grid"><div class="card"><h2>{{$products}}</h2><p>Products</p></div><div class="card"><h2>{{$orders}}</h2><p>Orders</p></div><div class="card"><h2>{{$customers}}</h2><p>Customers</p></div></div><br><a class="btn" href="{{route('admin.products.index')}}">Manage products</a>@endsection

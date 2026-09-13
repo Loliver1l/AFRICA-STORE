@@ -1,0 +1,2 @@
+@extends('layouts.app') @section('content')
+<h1>East Africa Store</h1><p>Shop quality products across East Africa.</p><div class="grid">@foreach($products as $product)<div class="card"><h3>{{ $product->name }}</h3><p>{{ Str::limit($product->description,100) }}</p><div class="price">${{ number_format($product->price_usd,2) }}</div><br><a class="btn" href="{{route('products.show',$product)}}">View product</a></div>@endforeach</div>@endsection

@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('content')<div class="card"><h1>Order {{$order->order_number}}</h1><p>Status: {{$order->status}}</p><p>Total: ${{number_format($order->total_usd,2)}}</p>@foreach($order->items as $item)<p>{{$item->product_name}} × {{$item->quantity}} — ${{number_format($item->total_usd,2)}}</p>@endforeach</div>@endsection

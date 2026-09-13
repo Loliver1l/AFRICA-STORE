@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('content')<h1>Favorites</h1>@forelse($favorites as $favorite)<div class="card"><h3>{{$favorite->product->name}}</h3><a class="btn" href="{{route('products.show',$favorite->product)}}">View</a></div>@empty<p>No favorites yet.</p>@endforelse @endsection

@@ -1,0 +1,10 @@
+IMPORTANT:
+This ZIP contains the application code and deployment configuration, but Laravel's generated
+composer.json/package-lock files are not included because they depend on the exact Laravel
+installer output.
+
+If you already have Laravel installed, copy these files into a fresh Laravel 13 application.
+The safest phone-only route is to create the Laravel project using a hosted GitHub/Render workflow
+or use a Laravel-compatible online development environment.
+
+Do not put real API keys or passwords into GitHub.

@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('content')<h1>My Orders</h1>@foreach($orders as $order)<div class="card"><strong>{{$order->order_number}}</strong><p>${{number_format($order->total_usd,2)}} — {{$order->status}}</p><a class="btn" href="{{route('orders.show',$order)}}">View</a></div>@endforeach{{$orders->links()}}@endsection
